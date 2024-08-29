@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JET MÜZİK</title>
+    <link rel="icon" type="image/x-icon" href="https://firebasestorage.googleapis.com/v0/b/heden-9c6ae.appspot.com/o/JET.png?alt=media&token=5c173066-9277-417d-9c5e-b296431ed208">
+    <style>
+    body {
+            margin: 0;
+            padding: 0;
+            background-color: #ff4500;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        #tab-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #ff4500;
+            box-sizing: border-box;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .tab {
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            color: black;
+            border-bottom: 2px solid white;
+            flex-grow: 1;
+            background-color: #ff4500;
+            border: none;
+            cursor: pointer;
+        }
+
+        .tab-active {
+            color: black;
+            font-weight: bold;
+        }
+
+     
+
+        #query {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #f0ecec;
+            border-radius: 4px;
+            flex-grow: 1;
+            width: 65%;
+            margin-right: 5%;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 15%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #results {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        #results > div {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        #results img {
+            width: 120px;
+            height: 90px;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        #results h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+       
+
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        #controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #controls button:hover {
+            background-color: #0056b3;
+        }
+
+       
+
+     
+
+        #thumbnail {
+            width: 60px;
+            margin-right: 10px;
+        }
+
+   
+
+      
+      
+
+        #toggleButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            #results img {
+                width: 80px;
+                height: 60px;
+            }
+
+           
+
+            #query {
+                width: 70%;
+                margin-right: 5%;
+                margin-bottom: 0;
+            }
+
+            button {
+                width: 25%;
+            }
+
+          
+
+           
+
+            #thumbnail {
+                width: 50px;
+            }
+        }
+            body {
+            margin-left: 2%;
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            text-align: left;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab-container">
+        <button class="button" onclick="window.location.href='jetmüzik.html'">JET MÜZİK</button>
+        <button class="button" onclick="window.location.href='https://www.orneklink.com'">İNDİRİLEN</button>
+        <button class="button" onclick="window.location.href='hakkında.html'">HAKKINDA</button>
+      </div>
+
+      <img src="LOga.jpg" class="ode-Logo" style="width: %; height: 30%;">
+
+      <div class="content">
+        <p> JET MÜZİK UYGULAMASI ÇALIŞKAN YAZILIM TARAFINDAN YAPILMIŞTIR</p>
+        <p> JET MÜZİK UYGULAMASI 22 Mayıs 2023 YILINDA OLUŞTURULMUŞ BİR PROJEDİR</p>
+        <p> UYGULAMA HAKKINDA ÖNERİLERİNİZİ whatsapp:05346318117 telegram:05346318117 BİZE BİLDİREBİLİRSİNİZ</p>
+    </div>

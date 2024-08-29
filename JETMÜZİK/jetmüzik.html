@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JET MÜZİK</title>
+    <link rel="icon" type="image/x-icon" href="https://firebasestorage.googleapis.com/v0/b/heden-9c6ae.appspot.com/o/JET.png?alt=media&token=5c173066-9277-417d-9c5e-b296431ed208">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ff4500;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        #tab-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #ff4500;
+            box-sizing: border-box;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .tab {
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            color: black;
+            border-bottom: 2px solid white;
+            flex-grow: 1;
+            background-color: #ff4500;
+            border: none;
+            cursor: pointer;
+        }
+
+        .tab-active {
+            color: black;
+            font-weight: bold;
+        }
+
+        #searchForm {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 94%;
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #query {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #f0ecec;
+            border-radius: 4px;
+            flex-grow: 1;
+            width: 65%;
+            margin-right: 5%;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 15%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #results {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        #results > div {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        #results img {
+            width: 120px;
+            height: 90px;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        #results h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        #player {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: #000;
+            display: none;
+            flex-direction: column;
+            color: rgb(253, 253, 253);
+            overflow: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        #controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #controls button:hover {
+            background-color: #0056b3;
+        }
+
+        #errorMessage {
+            color: red;
+            font-size: 20px;
+            margin-top: 10px;
+            position: absolute;
+            top: 10px;
+            width: calc(100% - 20px);
+            text-align: center;
+        }
+
+        #videoInfo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        #thumbnail {
+            width: 60px;
+            margin-right: 10px;
+        }
+
+        #videoText {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #videoTitle, #channelTitle {
+            margin: 0;
+            text-align: left;
+        }
+
+        #playerContainer {
+            flex-grow: 1;
+            display: none;
+        }
+
+        #toggleButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            #results img {
+                width: 80px;
+                height: 60px;
+            }
+
+            #searchForm {
+                width: 100%;
+            }
+
+            #query {
+                width: 70%;
+                margin-right: 5%;
+                margin-bottom: 0;
+            }
+
+            button {
+                width: 25%;
+            }
+
+            #player {
+                height: 150px;
+            }
+
+            #videoInfo {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #thumbnail {
+                width: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="tab-container">
+        <button class="button" onclick="window.location.href='jetmüzik.html'">JET MÜZİK</button>
+        <button class="button" onclick="window.location.href='https://www.orneklink.com'">İNDİRİLEN</button>
+        <button class="button" onclick="window.location.href='hakkında.html'">HAKKINDA</button>
+      </div>
+      
+</div>
+
+    <form id="searchForm">
+        <input type="text" id="query" placeholder="Aramak istediğiniz müziği girin">
+        <button type="submit">Ara</button>
+    </form>
+
+    <div id="results"></div>
+
+    <div id="player">
+        <button id="toggleButton" onclick="togglePlayer()">X</button>
+        <div id="videoInfo">
+            <img id="thumbnail" src="" alt="Video Thumbnail">
+            <div id="videoText">
+                <h2 id="videoTitle"></h2>
+                <p id="channelTitle"></p>
+                <div id="controls">
+                    <button id="startButton">Başlat</button>
+                    <button id="stopButton">Durdur</button>
+                    <button id="downloadButton">İndir</button>
+                </div>
+            </div>
+        </div>
+        <div id="playerContainer"></div>
+        <p id="errorMessage" style="display: none;">Video oynatılmadı. Lütfen tekrar deneyin.</p>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        const apiKey = 'AIzaSyAyHft5_tv1E1omYPZDxotKRESQdfe78FM'; 
+        let player;
+        let currentVideoId = '';
+        let timeout;
+        let videoStarted = false;
+
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            searchMusic();
+        });
+
+        function searchMusic() {
+            const query = encodeURIComponent(document.getElementById('query').value);
+
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${query}&maxResults=50&key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    const results = document.getElementById('results');
+                    results.innerHTML = '';
+                    if (data.items.length === 0) {
+                        alert('Sonuç bulunamadı.');
+                        return;
+                    }
+                    data.items.forEach(item => {
+                        const videoId = item.id.videoId;
+                        const title = item.snippet.title;
+                        const channelTitle = item.snippet.channelTitle;
+                        const thumbnailUrl = item.snippet.thumbnails.default.url;
+
+                        const resultDiv = document.createElement('div');
+                        resultDiv.addEventListener('click', () => playMusic(videoId, title, channelTitle, thumbnailUrl));
+
+                        const thumbnail = document.createElement('img');
+                        thumbnail.src = thumbnailUrl;
+
+                        const titleElement = document.createElement('h2');
+                        titleElement.textContent = title;
+
+                        resultDiv.appendChild(thumbnail);
+                        resultDiv.appendChild(titleElement);
+
+                        results.appendChild(resultDiv);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function playMusic(videoId, title, channelTitle, thumbnailUrl) {
+            if (currentVideoId !== videoId || !videoStarted) {
+                clearTimeout(timeout);
+                videoStarted = false;
+
+                if (!player) {
+                    player = new YT.Player('playerContainer', {
+                        height: '200',
+                        width: '300',
+                        videoId: videoId,
+                        events: {
+                            'onStateChange': onPlayerStateChange,
+                            'onError': onPlayerError
+                        },
+                        playerVars: {
+                            'autoplay': 1,
+                            'controls': 0,
+                            'showinfo': 0,
+                            'modestbranding': 1
+                        }
+                    });
+                } else {
+                    player.loadVideoById(videoId);
+                }
+
+                document.getElementById('videoTitle').textContent = title;
+                document.getElementById('channelTitle').textContent = channelTitle;
+                document.getElementById('thumbnail').src = thumbnailUrl;
+
+                currentVideoId = videoId;
+                togglePlayer();
+            } else {
+                togglePlayer();
+            }
+        }
+
+        function togglePlayer() {
+            const playerElement = document.getElementById('player');
+            playerElement.style.display = 'block';
+            playerElement.style.height = 'auto';
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                videoStarted = false;
+            } else if (event.data === YT.PlayerState.PLAYING) {
+                videoStarted = true;
+            }
+        }
+
+        function onPlayerError(event) {
+            document.getElementById('errorMessage').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('errorMessage').style.display = 'none';
+            }, 3000);
+        }
+
+     
+        document.getElementById('startButton').addEventListener('click', function() {
+    if (player && player.playVideo) {
+        player.playVideo(); // Videoyu kaldığı yerden devam ettir
+    }
+});
+
+document.getElementById('stopButton').addEventListener('click', function() {
+    if (player && player.pauseVideo) {
+        player.pauseVideo(); // Videoyu duraklat
+    }
+});
+
+document.getElementById('toggleButton').addEventListener('click', function() {
+    const playerElement = document.getElementById('player');
+    
+    if (player && player.pauseVideo) {
+        player.pauseVideo(); // Videoyu duraklat
+    }
+    
+    // Player'ı gizle
+    playerElement.style.display = 'none';
+});
+
+    </script>
+</body>
+</html>
